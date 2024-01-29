@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block body %}   
+<div class="container my-5">
+    <h1 class="py-3">Posts</h1> 
+        <div class="row">
+            {% for item in post_list %}
+                <div class="col-lg-3">
+                    <div class="card" >
+                        <img src="{{item.image.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">{{item.title}}</h5>
+                        <a href="/blog/{{item.id}}" class="btn btn-primary">details</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}    
+        </div>
+    </div>
+    
+    {% endblock body %}

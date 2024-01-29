@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'blog',
     "taggit",
+    'django_summernote',
+    "django_bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -57,7 +59,7 @@ ROOT_URLCONF = 'BlogClone.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
