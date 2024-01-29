@@ -86,7 +86,7 @@ Contributing
 We welcome contributions to enhance the Django Blog App. Feel free to submit bug reports, feature requests, or pull requests. Before contributing, please review our contribution guidelines.
 
 License
-The Django Blog App is open-source and licensed under the MIT License. See the LICENSE file for details.
+The Django Blog  is open-source and licensed under the MIT License. See the LICENSE file for details.
 
 Happy blogging with Django! 📝✨
 
