@@ -2,8 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView , DetailView, CreateView, UpdateView, DeleteView
 from .models import Post ,Comment
 from .forms import PostForm
-from django.views import View
 from django.urls import reverse
+from django.db.models import Q
 
 class PostList(ListView):
     model = Post
@@ -41,7 +41,7 @@ class PostDelete(DeleteView):
 
 class AddCommentView(CreateView):
     model = Comment
-    fields = ['comment']  # Assuming 'text' is the field for the comment text
+    fields = ['comment'] 
 
     def form_valid(self, form):
         post_id = self.kwargs['post_id']

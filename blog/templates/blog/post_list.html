@@ -8,7 +8,7 @@
         <form method="GET" class="form-inline d-flex align-items-center">
             <div class="form-group has-search mx-2">
                 <span class="fa fa-search form-control-feedback"></span>
-                <input type="text" name="q" class="form-control" placeholder="Search" value="{{ request.GET.q }}">
+                <input type="search" name="q" class="form-control" placeholder="Search" value="{{ request.GET.q }}">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
             {% if request.GET.q %}
