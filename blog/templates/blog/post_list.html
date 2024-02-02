@@ -3,7 +3,19 @@
 
 {% block body %}   
 <div class="container my-5">
-    <h1 class="py-3">Posts</h1> 
+    <div class="d-flex align-items-center">
+        <h1 class="py-3">Posts</h1> 
+        <form method="GET" class="form-inline d-flex align-items-center">
+            <div class="form-group has-search mx-2">
+                <span class="fa fa-search form-control-feedback"></span>
+                <input type="text" name="q" class="form-control" placeholder="Search" value="{{ request.GET.q }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+            {% if request.GET.q %}
+                <a href="/blog" class="mx-2 btn btn-secondary ml-2">Reset</a>
+            {% endif %}
+        </form>
+    </div>
         <div class="row">
             {% for item in post_list %}
                 <div class="col-lg-3">

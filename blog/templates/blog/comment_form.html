@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block body %}
+
+
+    
+
+  <div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">            
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {% bootstrap_form form %}
+              {% bootstrap_button button_type="submit" content="Add Comment" %}
+            </form>
+        </div>
+    </div>
+</div>
+
+  {% endblock body %}

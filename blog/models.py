@@ -14,10 +14,11 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    user = models.ForeignKey(User,related_name='comment_author', on_delete=models.SET_NULL,null=True)
+    user = models.ForeignKey(User,related_name='comment_author', on_delete=models.CASCADE)
     post = models.ForeignKey(Post,related_name='comment_post',on_delete=models.CASCADE)
     comment = models.TextField(max_length=1000)
     create_at = models.DateTimeField(default=timezone.now)
+
 
 
 

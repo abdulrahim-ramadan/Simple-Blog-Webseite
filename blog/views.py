@@ -1,13 +1,26 @@
-from django.shortcuts import render
 from django.views.generic import ListView , DetailView, CreateView, UpdateView, DeleteView 
-from .models import Post
+from .models import Post , Comment
 from .forms import PostForm
+from django.urls import reverse
+from django.views.generic.edit import CreateView
+from django.db.models import Q
+
 
 class PostList(ListView):
     model = Post
+    template_name = 'post_list.html'  
+    context_object_name = 'post_list'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return Post.objects.filter(Q(title__icontains=query) | Q(content__icontains=query))
+        else:
+            return Post.objects.all()
 
 class PostDetail(DetailView):
-    model = Post 
+    model = Post
+
 
 class PostCreate(CreateView):
     model = Post
@@ -25,5 +38,25 @@ class PostEdit(UpdateView):
 class PostDelete(DeleteView):
     model = Post
     success_url='/blog/'
+    
+
+class AddCommentView(CreateView):
+    model = Comment
+    fields = ['comment']  # Assuming 'text' is the field for the comment text
+
+    def form_valid(self, form):
+        post_id = self.kwargs['post_id']
+        form.instance.post_id = post_id
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        post_id = self.kwargs['post_id']
+        return reverse('post_detail', kwargs={'post_id': post_id})
+
+
+
+class CommentListView(ListView):
+    model = Comment
+
 
  
