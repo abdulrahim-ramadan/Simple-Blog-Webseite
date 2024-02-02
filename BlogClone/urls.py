@@ -23,8 +23,6 @@ from blog.views import PostList, PostDetail, PostCreate, PostEdit, PostDelete, A
 
 
 
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/' , PostList.as_view()),
