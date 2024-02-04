@@ -4,31 +4,46 @@
 {% block body %}   
 <div class="container my-5">
     <div class="d-flex align-items-center">
-        <h1 class="py-3">Posts</h1> 
+        <h1 class="py-3 px-4">Posts</h1> 
         <form method="GET" class="form-inline d-flex align-items-center">
-            <div class="form-group has-search mx-2">
-                <span class="fa fa-search form-control-feedback"></span>
-                <input type="search" name="q" class="form-control" placeholder="Search" value="{{ request.GET.q }}">
+            <div class="mx-3 py-3 px-2">
+                <input type="search" name="q" class="input" placeholder="Type here..." value="{{ request.GET.q }}">
             </div>
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="button">Search</button>
             {% if request.GET.q %}
-                <a href="/blog" class="mx-2 btn btn-secondary ml-2">Reset</a>
+                <a href="/blog" class="buttonml-2 button px-3">Reset</a>
             {% endif %}
         </form>
     </div>
-        <div class="row">
+
             {% for item in post_list %}
-                <div class="col-lg-3">
-                    <div class="card" >
-                        <img src="{{item.image.url}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                        <h5 class="card-title">{{item.title}}</h5>
-                        <a href="/blog/{{item.id}}" class="btn btn-primary">details</a>
+            <main>
+                <section class="cards py-3">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="{{item.image.url}}" />
+                        </div>
+                        <div class="card-text">
+                            <h2>{{item.title}}</h2>
+                            <p>{{item.content|safe}}</p>
+                        </div>
+                        <div class="card-inner">
+                            <a href="/blog/{{item.id}}" class="button">details</a>
+                            <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>
                         </div>
                     </div>
-                </div>
-            {% endfor %}    
+            </section>
+            
+            </main>
+            {% endfor %}  
         </div>
-    </div>
+    </div> 
+
+ 
+    
+    
+    
+
+
     
     {% endblock body %}

@@ -8,13 +8,16 @@
 
   <div class="container my-5">
     <div class="row">
-        <div class="col-lg-8 mx-auto">            
-            <form method="post" enctype="multipart/form-data">
-              {% csrf_token %}
-              {% bootstrap_form form %}
-              {% bootstrap_button button_type="submit" content="Add Comment" %}
-            </form>
-        </div>
+      <div class="col-lg-8 mx-auto text-center">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.comment.label_tag }}
+          {{ form.comment }}
+          {{ form.comment.errors }}
+          <button type="submit" class="button" >Add Comment</button>
+        </form>
+      </div>
+      
     </div>
 </div>
 
