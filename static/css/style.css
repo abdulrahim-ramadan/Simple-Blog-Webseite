@@ -149,3 +149,21 @@ font-weight: 600;
      inset -20px -20px 60px #ffffff;
   transition: 0.3s;
  }
+
+/*  */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Set the height of the body to the viewport height */
+  margin: 0;
+}
+
+main {
+  text-align: center; /* Optional: Center the content within the main element */
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+}
