@@ -19,26 +19,25 @@
 
  
     {% for item in post_list %}
-    <main>
+    <main style="text-align: center;">
         <section class="cards" style=" display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
             <div class="card my-3" style="max-width: 500px;  text-align: left;">
                 <div class="card-image">
-                    <img src="{{item.image.url}}" class="img-fluid" alt="{{item.title}}" style="max-width: 100%; height: auto;" />
+                    <img src="{{item.image.url}}" class="img-fluid" alt="{{item.title}}" style="max-width: 100%; height: auto;"/>
                 </div>
                 <div class="card-text p-2">
-                    <h2 style="font-size: 1.2em;">{{item.title}}</h2>
-                    <p  style="font-size: 0.9em;">{{item.content|safe}}</p>
+                    <h2>{{item.title}}</h2>
+                    <p >{{item.content|safe}}</p>
                 </div>
                 <div class="card-inner my-2">
-                    <a href="/blog/{{item.id}}" class="button" style="font-size: 0.8em;">Details</a>
-                    <i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true" style="font-size: 1.2em;"></i>
+                    <a href="/blog/{{item.id}}" class="button">Details</a>
                 </div>
             </div>
         </section>
     </main>
     {% endfor %}
     </div> 
-
+    {% endblock body %}
  
     
     
@@ -46,4 +45,4 @@
 
 
     
-    {% endblock body %}
+    

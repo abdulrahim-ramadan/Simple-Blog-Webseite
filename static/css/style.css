@@ -21,7 +21,7 @@
   text-align: right;
   right: 5px;
   height: 120px;
-  /* float: right; */
+
 }
 .menu-list ul#menu {
   position: relative;
@@ -149,3 +149,4 @@ font-weight: 600;
      inset -20px -20px 60px #ffffff;
   transition: 0.3s;
  }
+

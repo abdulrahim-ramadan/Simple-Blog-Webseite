@@ -62,7 +62,7 @@ class CommentListView(ListView):
 
 class AddCommentView(CreateView):
     model = Comment
-    fields = ['comment']  # Assuming 'text' is the field for the comment text
+    fields = ['comment']
 
     def form_valid(self, form):
         post_id = self.kwargs['post_id']
