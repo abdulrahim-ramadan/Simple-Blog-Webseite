@@ -12,13 +12,22 @@
                     <h3 class="my-3">Edit Post</h3>
                     
                     <div>
-                        <form method="post" enctype="multipart/form-data" style="display: inline-block;">
+                        <!-- <form method="post" enctype="multipart/form-data" style="display: inline-block;">
                           {% csrf_token %}
                           
                           {{ form }}
                           
                           <button type="submit" class="button">Edit</button>
-                        </form>
+                        </form> -->
+
+                        <form action="/url/to/submit/" method="post" class="form" enctype="multipart/form-data">
+                          {% csrf_token %}
+                      
+                          {% bootstrap_form form %}
+                      
+                          <button type="submit" class="button">Edit</button>
+                      </form>
+                    
                       </div>
                       
                 </div>

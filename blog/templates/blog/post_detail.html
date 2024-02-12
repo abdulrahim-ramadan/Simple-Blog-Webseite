@@ -3,6 +3,8 @@
 
 
 {% block body %}
+
+
 <div class="container my-5">
     <div class="row">
         <div class="col-lg-8 mx-auto">
@@ -19,9 +21,9 @@
         <img class="img-fluid mt-4" src="{{post.image.url}}" alt=""> 
         <div>
             <h5>Comments</h5>
-            {% if post.comment_post.all %}
+            {% if post_comment.all %}
                 <ul>
-                    {% for comment in post.comment_post.all %}
+                    {% for comment in post_comment.all %} 
                         <li class="my-2">
                             <strong>{{ comment.user }}</strong>: {{ comment.comment }}
                         </li>
@@ -31,7 +33,8 @@
             {% else %}
                 <p>No comments yet.</p>
             {% endif %}
-        </div>   
+        </div>
+         
         <div  class="d-flex py-3">
                 <a href="/blog/{{post.id}}/comment " class="button">Add Comment</a>     
             </div>

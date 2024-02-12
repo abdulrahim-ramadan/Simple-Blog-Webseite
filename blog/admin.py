@@ -9,11 +9,11 @@ class postAdmin(SummernoteModelAdmin):
     search_fields=['title','content']
 
 class commentAdmin(admin.ModelAdmin):
-    list_display=['comment','create_at']
-    list_filter=['create_at']
+    list_display=['comment','created_at']
+    list_filter=['created_at']
     search_fields=['comment']
     
     
 
 admin.site.register(Post,postAdmin)
-admin.site.register(Comment)
+admin.site.register(Comment,commentAdmin)
