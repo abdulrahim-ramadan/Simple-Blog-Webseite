@@ -20,7 +20,7 @@
         </p>
         <img class="img-fluid mt-4" src="{{post.image.url}}" alt=""> 
         <div>
-            <h5>Comments</h5>
+            <h5 class="my-3">Comments</h5>
             {% if post_comment.all %}
                 <ul>
                     {% for comment in post_comment.all %} 
@@ -31,7 +31,7 @@
                     {% endfor %}
                 </ul>
             {% else %}
-                <p>No comments yet.</p>
+                <p class="my-3">No comments yet.</p>
             {% endif %}
         </div>
 
@@ -39,13 +39,13 @@
                 <div class="row">
                   <div class="col-lg-8 mx-auto text-center">
                     
-                    <form  method="post" action="/blog/{{object.pk}}/add-comment">
-                      {% csrf_token %}
+                    <form method="post" action="/blog/{{ object.pk }}/add-comment" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <textarea class="form-control" name="comment" placeholder="Add Your Comment...."></textarea>
+                        <button type="submit" class="button my-3">Add comment</button>
+                      </form>
                       
-                      <textarea class="form-control" name="comment" placeholder="Add Your  Comment...."></textarea>
-                      <button type="submit" class="button" ><a href="blog/{{post.pk}}/add-comment" value="" enctype="multipart/form-data">Add comment</a></button>
-                    </form>
-                  </div>
         </div>
     </div>    
 </div>
