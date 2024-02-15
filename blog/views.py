@@ -1,8 +1,8 @@
 from typing import Any
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView , DetailView, CreateView, UpdateView, DeleteView
-from .models import Post ,Comment
-from .forms import PostForm
+from .models import Post , Comment
+from .forms import PostForm, CommentForm
 from django.urls import reverse
 from django.db.models import Q
 
@@ -21,10 +21,25 @@ class PostList(ListView):
 class PostDetail(DetailView):
     model = Post
 
-    def get_context_data(self, **kwargs: Any):
+    def get_context_data(self, **kwargs):
         context=super().get_context_data(**kwargs)
         context["post_comment"] = Comment.objects.filter(post=self.get_object())
         return context
+    
+def add_post_comment(request,pk):
+    post = Post.objects.get(pk=pk)
+
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            myform = form.save(commit=False)
+            myform.user =  request.user
+            myform.post = post
+            myform.save()
+            
+            return redirect(reverse('post_detail', kwargs={'pk': post.pk}))
+        
 
 
 class PostCreate(CreateView):
@@ -44,19 +59,8 @@ class PostDelete(DeleteView):
     model = Post
     success_url='/blog/'
     
+    
 
-class AddCommentView(CreateView):
-    model = Comment
-    fields = ['comment'] 
-
-    def form_valid(self, form):
-        post_id = self.kwargs['post_id']
-        form.instance.post_id = post_id
-        return super().form_valid(form)
-
-    def get_success_url(self):
-        post_id = self.kwargs['post_id']
-        return reverse('post_detail', kwargs={'post_id': post_id})
 
 
 

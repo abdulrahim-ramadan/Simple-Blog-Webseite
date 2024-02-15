@@ -9,7 +9,7 @@ class postAdmin(SummernoteModelAdmin):
     search_fields=['title','content']
 
 class commentAdmin(admin.ModelAdmin):
-    list_display=['comment','created_at']
+    list_display=['user','comment','created_at']
     list_filter=['created_at']
     search_fields=['comment']
     

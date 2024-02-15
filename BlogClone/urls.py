@@ -18,21 +18,20 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from blog.views import PostList, PostDetail, PostCreate, PostEdit, PostDelete, AddCommentView 
+from blog.views import PostList, PostDetail, PostCreate, PostEdit, PostDelete, add_post_comment
 
 
-
+app_name = 'blog'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/' , PostList.as_view()),
-    path('blog/<int:pk>/', PostDetail.as_view()),
+    path('blog/<int:pk>', PostDetail.as_view(),name='post_detail'),
     path('blog/new/', PostCreate.as_view()),
-    path('blog/<int:pk>/edit/', PostEdit.as_view()),
-    path('blog/<int:pk>/delete/', PostDelete.as_view()),
-    path('blog/<int:post_id>/comment/', AddCommentView.as_view(), name='add_comment'),
-    path('blog/<int:post_id>/', AddCommentView.as_view(), name ='post_detail'),
-  
+    path('blog/<int:pk>/edit', PostEdit.as_view()),
+    path('blog/<int:pk>/delete', PostDelete.as_view()),
+    path('blog/<int:pk>/add-comment', add_post_comment,name='add_comment'),
+
 
 
     path('summernote/', include('django_summernote.urls')),
